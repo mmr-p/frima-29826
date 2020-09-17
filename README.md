@@ -32,9 +32,11 @@ Things you may want to cover:
 | nickname          | string | null: false |
 | email             | string | null: false |
 | password          | string | null: false |
-| name              | string | null: false |
-| name_kana         | string | null: false |
-| birth_date        | string | null: false |
+| last_name         | string | null: false |
+| first_name        | string | null: false |
+| last_name_kana    | string | null: false |
+| first_name_kana   | string | null: false |
+| birth_date        | date   | null: false |
 
 ### Association
 
@@ -47,46 +49,60 @@ Things you may want to cover:
 
 | column            | Type      | Options                        |
 |-------------------|-----------|--------------------------------|
-| image             | string    | null: false                    |
 | name              | string    | null: false                    |
-| description       | string    | null: false                    |
-| genre             | string    | null: false                    |
-| condition         | string    | null: false                    |
-| shipping_fee_info | string    | null: false                    |
-| location          | string    | null: false                    |
-| price             | string    | null: false                    |
-| user_id           | reference | null: false, foreign_key: true |
+| description       | text      | null: false                    |
+| genre             | integer   | null: false                    |
+| condition         | integer   | null: false                    |
+| shipping_fee_info | integer   | null: false                    |
+| location          | integer   | null: false                    |
+| days_to_ship      | integer   | null: false                    |
+| price             | integer   | null: false                    |
+| user              | reference | null: false, foreign_key: true |
 
 ### Association
 
 - has_many :comments
 - belongs_to :user
-- belongs_to :customer
+- has_one :customer
 
 ## customers テーブル
 
 | column            | Type      | Options                        |
 |-------------------|-----------|--------------------------------|
-| cc_number         | string    | null: false                    |
-| expire_date       | string    | null: false                    |
-| cvc               | string    | null: false                    |
-| postal_code       | string    | null: false                    |
-| address           | string    | null: false                    |
-| tel               | string    | null: false                    |
-| item_id           | reference | null: false, foreign_key: true |
-| user_id           | reference | null: false, foreign_key: true |
+| user              | reference | null: false, foreign_key: true |
+| item              | reference | null: false, foreign_key: true |
+| address           | reference | null: false, foreign_key: true |
 
 ### Association
 
-- has_many :items
 - belongs_to :user
+- belongs_to :item
+- has_one :address
+
+
+## addresses テーブル
+
+| column            | Type      | Options                        |
+|-------------------|-----------|--------------------------------|
+| postal_code       | string    | null: false                    |
+| prefecture        | string    | null: false                    |
+| city              | string    | null: false                    |
+| street            | string    | null: false                    |
+| building          | string    | null: true                     |
+| tel               | string    | null: false                    |
+| item              | reference | null: false, foreign_key: true |
+| user              | reference | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to: customer
 
 ## comments テーブル
 | column            | Type      | Options                        |
 |-------------------|-----------|--------------------------------|
 | cc_number         | string    | null: false                    |
-| item_id           | reference | null: false, foreign_key: true |
-| user_id           | reference | null: false, foreign_key: true |
+| item              | reference | null: false, foreign_key: true |
+| user              | reference | null: false, foreign_key: true |
 
 ### Association
 
