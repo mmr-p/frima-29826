@@ -22,3 +22,89 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# テーブル設計
+
+## users テーブル
+
+| column            | Type   | Options     |
+|-------------------|--------|-------------|
+| nickname          | string | null: false |
+| email             | string | null: false |
+| password          | string | null: false |
+| last_name         | string | null: false |
+| first_name        | string | null: false |
+| last_name_kana    | string | null: false |
+| first_name_kana   | string | null: false |
+| birth_date        | date   | null: false |
+
+### Association
+
+- has_many :items
+- has_many :comments
+- has_one :customer
+
+
+## items テーブル
+
+| column            | Type      | Options                        |
+|-------------------|-----------|--------------------------------|
+| name              | string    | null: false                    |
+| description       | text      | null: false                    |
+| genre             | integer   | null: false                    |
+| condition         | integer   | null: false                    |
+| shipping_fee_info | integer   | null: false                    |
+| location          | integer   | null: false                    |
+| days_to_ship      | integer   | null: false                    |
+| price             | integer   | null: false                    |
+| user              | reference | null: false, foreign_key: true |
+
+### Association
+
+- has_many :comments
+- belongs_to :user
+- has_one :customer
+
+## customers テーブル
+
+| column            | Type      | Options                        |
+|-------------------|-----------|--------------------------------|
+| user              | reference | null: false, foreign_key: true |
+| item              | reference | null: false, foreign_key: true |
+| address           | reference | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :address
+
+
+## addresses テーブル
+
+| column            | Type      | Options                        |
+|-------------------|-----------|--------------------------------|
+| postal_code       | string    | null: false                    |
+| prefecture        | string    | null: false                    |
+| city              | string    | null: false                    |
+| street            | string    | null: false                    |
+| building          | string    | null: true                     |
+| tel               | string    | null: false                    |
+| item              | reference | null: false, foreign_key: true |
+| user              | reference | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to: customer
+
+## comments テーブル
+| column            | Type      | Options                        |
+|-------------------|-----------|--------------------------------|
+| cc_number         | string    | null: false                    |
+| item              | reference | null: false, foreign_key: true |
+| user              | reference | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
