@@ -32,5 +32,5 @@ class ItemsController < ApplicationController
 
   private
 
-  params.require(:item).permit(:name, :description, :genre, :condition, :shipping_fee_info, :location, :days_to_ship, :price)
+  params.require(:item).permit(:name, :description, :genre, :condition, :shipping_fee_info, :location, :days_to_ship, :price, :image).merge(user_id: current_user.id)
 end
