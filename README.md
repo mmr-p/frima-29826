@@ -47,17 +47,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| column            | Type      | Options                        |
-|-------------------|-----------|--------------------------------|
-| name              | string    | null: false                    |
-| description       | text      | null: false                    |
-| genre             | integer   | null: false                    |
-| condition         | integer   | null: false                    |
-| shipping_fee_info | integer   | null: false                    |
-| location          | integer   | null: false                    |
-| days_to_ship      | integer   | null: false                    |
-| price             | integer   | null: false                    |
-| user              | reference | null: false, foreign_key: true |
+| column               | Type      | Options                        |
+|----------------------|-----------|--------------------------------|
+| name                 | string    | null: false                    |
+| description          | text      | null: false                    |
+| genre_id             | integer   | null: false                    |
+| condition_id         | integer   | null: false                    |
+| shipping_fee_info_id | integer   | null: false                    |
+| location_id          | integer   | null: false                    |
+| days_to_ship_id      | integer   | null: false                    |
+| price                | integer   | null: false                    |
+| user                 | reference | null: false, foreign_key: true |
 
 ### Association
 
