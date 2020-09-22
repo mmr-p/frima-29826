@@ -6,9 +6,12 @@ function calculate() {
 
   itemPrice.addEventListener('input', function() {
     let formData = itemPrice.value;
-    let fee = formData * 0.1;
+    let fee = Math.floor(formData * 0.1);
     let sales = formData - fee;
+    fee = String(fee).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
     addTaxPrice.innerHTML = fee;
+
+    sales = String(sales).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
     profit.innerHTML = sales;
 
   });
