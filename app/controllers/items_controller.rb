@@ -22,24 +22,22 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    
   end
 
   def edit
-    
   end
 
   def update
-    
   end
 
   def show
-    
   end
 
   private
 
   def item_params
-  params.require(:item).permit(:name, :description, :genre_id, :condition_id, :shipping_fee_info_id, :location_id, :days_to_ship_id, :price, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(
+      :name, :description, :genre_id, :condition_id, :shipping_fee_info_id, :location_id, :days_to_ship_id, :price, :image
+    ).merge(user_id: current_user.id)
   end
 end
