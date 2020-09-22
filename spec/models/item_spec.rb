@@ -4,6 +4,11 @@ RSpec.describe Item, type: :model do
   describe '商品出品機能' do
     before do
       @item = FactoryBot.build(:item)
+      @item.image = fixture_file_upload('public/images/test_image.jpg')
+    end
+
+    it '全ての情報が正しいフォーマットで入力されていれば出品登録できる' do
+      expect(@item).to be_valid
     end
 
     it '画像がないと出品できない' do
@@ -60,8 +65,14 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Price can't be blank")
     end
 
-    it '価格範囲が¥300~¥9,999,999の間でなければ出品できない' do
+    it '価格が300円以下だと出品できない' do
       @item.price = 100
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Price Out of setting range')
+    end
+
+    it '価格が10,000,000円以上だと出品できない' do
+      @item.price = 10000000
       @item.valid?
       expect(@item.errors.full_messages).to include('Price Out of setting range')
     end
