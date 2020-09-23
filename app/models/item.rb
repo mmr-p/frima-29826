@@ -2,6 +2,9 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :genre
   belongs_to_active_hash :condition
+  belongs_to_active_hash :shipping_fee_info
+  belongs_to_active_hash :location
+  belongs_to_active_hash :days_to_ship
   has_many :comments
   belongs_to :user
   has_one :customer
