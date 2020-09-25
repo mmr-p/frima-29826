@@ -56,7 +56,7 @@ Things you may want to cover:
 | shipping_fee_info_id | integer   | null: false                    |
 | location_id          | integer   | null: false                    |
 | days_to_ship_id      | integer   | null: false                    |
-| price                | integer   | null: false                    |
+| price                | string    | null: false                    |
 | user                 | reference | null: false, foreign_key: true |
 
 ### Association
@@ -85,11 +85,11 @@ Things you may want to cover:
 | column            | Type      | Options                        |
 |-------------------|-----------|--------------------------------|
 | postal_code       | string    | null: false                    |
-| prefecture        | string    | null: false                    |
+| prefecture_id     | integer   | null: false                    |
 | city              | string    | null: false                    |
 | street            | string    | null: false                    |
 | building          | string    | null: true                     |
-| tel               | string    | null: false                    |
+| tel               | integer   | null: false                    |
 | item              | reference | null: false, foreign_key: true |
 | user              | reference | null: false, foreign_key: true |
 
@@ -100,7 +100,7 @@ Things you may want to cover:
 ## comments テーブル
 | column            | Type      | Options                        |
 |-------------------|-----------|--------------------------------|
-| cc_number         | string    | null: false                    |
+| content           | text      | null: false                    |
 | item              | reference | null: false, foreign_key: true |
 | user              | reference | null: false, foreign_key: true |
 
