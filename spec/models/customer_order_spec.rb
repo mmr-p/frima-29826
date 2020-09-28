@@ -22,6 +22,12 @@ RSpec.describe CustomerOrder, type: :model do
       expect(@customer_order.errors.full_messages).to include('Prefecture Select')
     end
 
+    it '都道府県がnilだと購入できない' do
+      @customer_order.prefecture_id = nil
+      @customer_order.valid?
+      expect(@customer_order.errors.full_messages).to include('Prefecture Select')
+    end
+
     it '市区町村がなければ購入できない' do
       @customer_order.city = nil
       @customer_order.valid?
