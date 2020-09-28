@@ -1,5 +1,4 @@
 class CustomerOrder
-
   include ActiveModel::Model
   attr_accessor :postal_code, :prefecture_id, :city, :street, :building, :tel, :item_id, :user_id, :token
 
@@ -15,6 +14,7 @@ class CustomerOrder
 
   def save
     customer = Customer.create(item_id: item_id, user_id: user_id)
-    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, street: street, building: building, tel: tel, customer_id: customer.id)
+    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city,
+                   street: street, building: building, tel: tel, customer_id: customer.id)
   end
 end

@@ -19,7 +19,7 @@ RSpec.describe CustomerOrder, type: :model do
     it '都道府県を選択していなければ購入できない' do
       @customer_order.prefecture_id = 1
       @customer_order.valid?
-      expect(@customer_order.errors.full_messages).to include("Prefecture Select")
+      expect(@customer_order.errors.full_messages).to include('Prefecture Select')
     end
 
     it '市区町村がなければ購入できない' do
@@ -43,13 +43,13 @@ RSpec.describe CustomerOrder, type: :model do
     it '郵便番号にハイフンがなければ購入できない' do
       @customer_order.postal_code = '1234567'
       @customer_order.valid?
-      expect(@customer_order.errors.full_messages).to include("Postal code Input correctly")
+      expect(@customer_order.errors.full_messages).to include('Postal code Input correctly')
     end
 
     it '電話番号は１１桁以内でなければ購入できない' do
       @customer_order.tel = '111111111111'
       @customer_order.valid?
-      expect(@customer_order.errors.full_messages).to include("Tel is too long (maximum is 11 characters)")
+      expect(@customer_order.errors.full_messages).to include('Tel is too long (maximum is 11 characters)')
     end
 
     it 'トークンがなければ購入できない' do
