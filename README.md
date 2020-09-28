@@ -71,7 +71,6 @@ Things you may want to cover:
 |-------------------|-----------|--------------------------------|
 | user              | reference | null: false, foreign_key: true |
 | item              | reference | null: false, foreign_key: true |
-| address           | reference | null: false, foreign_key: true |
 
 ### Association
 
@@ -92,6 +91,7 @@ Things you may want to cover:
 | tel               | integer   | null: false                    |
 | item              | reference | null: false, foreign_key: true |
 | user              | reference | null: false, foreign_key: true |
+| customers         | reference | null: false, foreign_key: true |
 
 ### Association
 
