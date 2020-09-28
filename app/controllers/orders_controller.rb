@@ -3,11 +3,7 @@ class OrdersController < ApplicationController
   before_action :move_to_index
 
   def index
-    if current_user.id == @item.user_id || @item.customer.present?
-      redirect_to root_path
-    else
-      @order = CustomerOrder.new
-    end
+    @order = CustomerOrder.new
   end
 
   def create
@@ -29,6 +25,7 @@ class OrdersController < ApplicationController
 
   def move_to_index
     redirect_to root_path unless user_signed_in?
+    redirect_to root_path if current_user.id == @item.user_id || @item.customer.present?
   end
 
   def order_params
