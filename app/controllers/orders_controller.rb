@@ -24,8 +24,11 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index
-    redirect_to root_path unless user_signed_in?
-    redirect_to root_path if current_user.id == @item.user_id || @item.customer.present?
+    unless user_signed_in?
+      redirect_to root_path
+    else current_user.id != @item.user_id || @item.customer == nil
+      redirect_to root_path
+    end
   end
 
   def order_params
