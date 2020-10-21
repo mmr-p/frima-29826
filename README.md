@@ -41,7 +41,6 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_many :comments
 - has_one :customer
 
 
@@ -61,7 +60,6 @@ Things you may want to cover:
 
 ### Association
 
-- has_many :comments
 - belongs_to :user
 - has_one :customer
 
@@ -96,15 +94,3 @@ Things you may want to cover:
 ### Association
 
 - belongs_to: customer
-
-## comments テーブル
-| column            | Type      | Options                        |
-|-------------------|-----------|--------------------------------|
-| content           | text      | null: false                    |
-| item              | reference | null: false, foreign_key: true |
-| user              | reference | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :item
